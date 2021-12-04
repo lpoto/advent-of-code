@@ -45,6 +45,7 @@ class Day01 {
 		clean_lines(first);
 	}
 };
+
 #ifndef MAIN
 int main(int argc, char** argv)
 {

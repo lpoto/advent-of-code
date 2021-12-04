@@ -86,5 +86,3 @@ void merge_sort(line** head_ref)
 	merge_sort(&b);
 	*head_ref = sorted_merge(a, b);
 }
-void day01(line* ln) {};
-void day02(line* ln) {};

@@ -28,6 +28,7 @@ class Day06 {
 		return ln == NULL ? r : r + part_one(ln->next, p_two);
 	}
 	int part_two(line* ln) { return part_one(ln, 1); }
+
   public:
 	void print_results(char* file_name)
 	{

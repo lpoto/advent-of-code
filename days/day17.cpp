@@ -15,7 +15,6 @@ class Day17 {
 		for (int i = 0; i < CYCLES; i++) coords = cycle(coords, 4);
 		return coords.size();
 	}
-
 	set<array<int, 4>> cycle(set<array<int, 4>> coords, int d)
 	{
 		set<array<int, 4>> new_coords;
@@ -24,7 +23,6 @@ class Day17 {
 			edit_cube_state(&coords, &new_coords, &memo, &it, 1, d);
 		return new_coords;
 	}
-
 	void edit_cube_state(set<array<int, 4>>* old_c, set<array<int, 4>>* new_c,
 						 set<array<int, 4>>* memo, array<int, 4>* c,
 						 int check_nbrs, int dim)

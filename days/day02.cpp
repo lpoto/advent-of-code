@@ -27,6 +27,7 @@ class Day02 {
 		string p = s.substr(s.find(": ") + 2);
 		return ((p[pos1] == letter) ^ (p[pos2] == letter)) + part_two(ln->next);
 	}
+
   public:
 	void print_results(char* file_name)
 	{
@@ -43,7 +44,7 @@ class Day02 {
 };
 
 #ifndef MAIN
-int _main(int argc, char** argv)
+int main(int argc, char** argv)
 {
 	if (argc < 2) {
 		cout << "Missing input file name!";
