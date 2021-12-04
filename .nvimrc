@@ -13,6 +13,7 @@ vim.fn['telescope_pickers'] = function()
 end
 
 vim.fn['program_filetypes'] = function()
+    root = require('root')()
     require('program').setup({
         filetypes = {
             cpp = {
@@ -20,8 +21,8 @@ vim.fn['program_filetypes'] = function()
                     exe = 'g++',
                     args = {
                         '%:p',
-                        '%:p:h:h/utils.cpp',
-                        '-o %:p:h/__compiled__/%:t:r',
+                        root..'/utils.cpp',
+                        '-o '..root..'/__compiled__/%:t:r',
                         '-std=c++20',
                         '-Wall',
                         '-pedantic'
@@ -29,8 +30,8 @@ vim.fn['program_filetypes'] = function()
                 },
                 execution = {
                     args = {
-                        '%:p:h/__compiled__/%:t:r',
-                        '%:p:h:h/inputs/%:t:r.txt'
+                        root..'/__compiled__/%:t:r',
+                        root..'/inputs/%:t:r.txt',
                     }
                 }
             }
