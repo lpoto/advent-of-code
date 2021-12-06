@@ -1,2 +1,9 @@
-__compiled__/
+*
+!*/
+!*.*
+*.out
+*.txt
 inputs/
+
+__compiled__/
+__pycache__/
