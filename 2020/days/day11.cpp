@@ -66,28 +66,12 @@ class Day11 {
     }
 
   public:
-    void print_results(char* file_name)
+    Results* results(line* first)
     {
-        line* first = read_lines(file_name);
         line* copy = copy_lines(first);
-        cout << "Day11\n";
-        clock_t begin = clock();
-        cout << "  Part one: " << part_one(first) << endl;
-        cout << "  Part two: " << part_two(copy) << endl;
-        clock_t end = clock();
-        double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
-        cout << "  time spent: " << time_spent << 's' << endl;
+        int p1 = part_one(first);
+        int p2 = part_two(copy);
+        clean_lines(copy);
+        return new_results(to_string(p1), to_string(p2));
     }
 };
-#ifndef MAIN
-int main(int argc, char** argv)
-{
-    if (argc < 2) {
-        cout << "Missing input file name!";
-        return 1;
-    }
-    Day11 x = Day11();
-    x.print_results(argv[1]);
-    return 0;
-}
-#endif

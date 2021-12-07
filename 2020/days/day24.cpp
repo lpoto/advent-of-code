@@ -55,34 +55,13 @@ class Day24 {
 	}
 
   public:
-	void print_results(char* file_name)
-	{
-		line* first = read_lines(file_name);
-		cout << "Day24\n";
-		clock_t begin = clock();
+    Results* results(line* first)
+    {
 		set<array<int, 3>> black_tiles;
 		unordered_map<string, array<int, 3>> directions = {
 			{"ne", {1, 0, -1}}, {"nw", {0, 1, -1}}, {"w", {-1, 1, 0}},
 			{"e", {1, -1, 0}},	{"se", {0, -1, 1}}, {"sw", {-1, 0, 1}}};
-		cout << "  Part one: " << part_one(first, &directions, &black_tiles)
-			 << endl;
-		cout << "  Part two: " << part_two(first, &directions, &black_tiles)
-			 << endl;
-		clock_t end = clock();
-		double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
-		cout << "  time spent: " << time_spent << 's' << endl;
-		clean_lines(first);
-	}
+        return new_results(to_string(part_one(first, &directions, &black_tiles)),
+                           to_string(part_two(first, &directions, &black_tiles)));
+    }
 };
-#ifndef MAIN
-int main(int argc, char** argv)
-{
-	if (argc < 2) {
-		cout << "Missing input file name!";
-		return 1;
-	}
-	Day24 x = Day24();
-	x.print_results(argv[1]);
-	return 0;
-}
-#endif

@@ -3,7 +3,7 @@ from advent_day import AdventDay
 
 class Day06(AdventDay):
     def __init__(self, filename):
-        self.timers = list(map(int, self.read_input(filename)[0].split(',')))
+        self.timers = tuple(map(int, self.read_input(filename)[0].split(',')))
 
     def results(self):
         return tuple(self.count_fishes(d) for d in (80, 256))

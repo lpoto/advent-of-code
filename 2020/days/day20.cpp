@@ -81,6 +81,7 @@ class Day20 {
 		while (t->next[lft] != NULL) t = t->next[lft];
 		int t_size2 = tiles_in_line(t, rght);
 		int t_size3 = t_size2 * (t_size - 2);
+        cout << t_size3 << endl;
 		char** picture = (char**)malloc(t_size3 * sizeof(char*));
 		int idx = 0;
 		while (t != NULL) {
@@ -220,30 +221,11 @@ class Day20 {
 	}
 
   public:
-	void print_results(char* file_name)
-	{
-		line* first = read_lines(file_name);
-		cout << "Day20\n";
+    Results* results(line* first)
+    {
 		vector<tile*> tiles;
 		extract_tiles(first, &tiles);
-		clock_t begin = clock();
-		cout << "  Part one: " << part_one(&tiles) << endl;
-		cout << "  Part two: " << part_two(&tiles) << endl;
-		clock_t end = clock();
-		double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
-		cout << "  time spent: " << time_spent << 's' << endl;
-		clean_lines(first);
-	}
+        return new_results(to_string(part_one(&tiles)),
+                           to_string(part_two(&tiles)));
+    }
 };
-#ifndef MAIN
-int main(int argc, char** argv)
-{
-	if (argc < 2) {
-		cout << "Missing input file name!";
-		return 1;
-	}
-	Day20 x = Day20();
-	x.print_results(argv[1]);
-	return 0;
-}
-#endif

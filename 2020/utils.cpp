@@ -86,3 +86,10 @@ void merge_sort(line** head_ref)
 	merge_sort(&b);
 	*head_ref = sorted_merge(a, b);
 }
+
+Results* new_results(string p1, string p2) {
+    Results* x = new Results();
+    x->p1 = p1;
+    x->p2 = p2;
+    return x;
+}

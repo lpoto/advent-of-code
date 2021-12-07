@@ -78,33 +78,14 @@ class Day22 {
 	}
 
   public:
-	void print_results(char* file_name)
-	{
-		line* first = read_lines(file_name);
-		cout << "Day22\n";
-		clock_t begin = clock();
+    Results* results(line* first)
+    {
 		deque<int> deck1, deck2;
 		first = first->next;
 		build_deck(&first, &deck1);
 		first = first->next->next;
 		build_deck(&first, &deck2);
-		cout << "  Part one: " << part_one(deck1, deck2) << endl;
-		cout << "  Part two: " << part_two(deck1, deck2) << endl;
-		clock_t end = clock();
-		double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
-		cout << "  time spent: " << time_spent << 's' << endl;
-		clean_lines(first);
-	}
+        return new_results(to_string(part_one(deck1, deck2)),
+                           to_string(part_two(deck1, deck2)));
+    }
 };
-#ifndef MAIN
-int main(int argc, char** argv)
-{
-	if (argc < 2) {
-		cout << "Missing input file name!";
-		return 1;
-	}
-	Day22 x = Day22();
-	x.print_results(argv[1]);
-	return 0;
-}
-#endif

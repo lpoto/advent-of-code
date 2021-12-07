@@ -1,9 +1,6 @@
-#define _GLIBCXX_REGEX_STATE_LIMIT 850000
 #include "../utils.h"
-#include <regex>
 #include <sstream>
 #include <unordered_map>
-#include <vector>
 
 struct rule {
 	char match = '0';
@@ -81,30 +78,11 @@ class Day19 {
 	}
 
   public:
-	void print_results(char* file_name)
-	{
-		line* first = read_lines(file_name);
-		cout << "Day19\n";
+    Results* results(line* first)
+    {
 		unordered_map<int, rule*> rules;
 		extract_rules(&rules, &first);
-		clock_t begin = clock();
-		cout << "  Part one: " << part_one(first->next, rules) << endl;
-		cout << "  Part two: " << part_two(first->next, rules) << endl;
-		clock_t end = clock();
-		double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
-		cout << "  time spent: " << time_spent << 's' << endl;
-		clean_lines(first);
-	}
+        return new_results(to_string(part_one(first->next, rules)),
+                           to_string(part_two(first->next, rules)));
+    }
 };
-#ifndef MAIN
-int main(int argc, char** argv)
-{
-	if (argc < 2) {
-		cout << "Missing input file name!";
-		return 1;
-	}
-	Day19 x = Day19();
-	x.print_results(argv[1]);
-	return 0;
-}
-#endif

@@ -55,28 +55,9 @@ class Day18 {
 	}
 
   public:
-	void print_results(char* file_name)
-	{
-		line* first = read_lines(file_name);
-		cout << "Day18\n";
-		clock_t begin = clock();
-		cout << "  Part one: " << part_one(first) << endl;
-		cout << "  Part two: " << part_two(first) << endl;
-		clock_t end = clock();
-		double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
-		cout << "  time spent: " << time_spent << 's' << endl;
-		clean_lines(first);
-	}
+    Results* results(line* first)
+    {
+        return new_results(to_string(part_one(first)),
+                           to_string(part_two(first)));
+    }
 };
-#ifndef MAIN
-int main(int argc, char** argv)
-{
-	if (argc < 2) {
-		cout << "Missing input file name!";
-		return 1;
-	}
-	Day18 x = Day18();
-	x.print_results(argv[1]);
-	return 0;
-}
-#endif

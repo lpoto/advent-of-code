@@ -23,9 +23,9 @@ vim.fn['program_filetypes'] = function()
                 compiler = {
                     exe = 'g++',
                     args = {
-                        '%:p',
+                        root..'/2020/main.cpp',
                         root..'/2020/utils.cpp',
-                        '-o '..root..'/2020/__compiled__/%:t:r.out',
+                        '-o '..root..'/2020/main.out',
                         '-std=c++20',
                         '-Wall',
                         '-pedantic'
@@ -33,8 +33,10 @@ vim.fn['program_filetypes'] = function()
                 },
                 execution = {
                     args = {
-                        root..'/2020/__compiled__/%:t:r.out',
-                        root..'/2020/inputs/%:t:r.txt',
+                        root..'/2020/main.out',
+                    },
+                    end_args = {
+                        '%:p:t:r'
                     }
                 }
             },
