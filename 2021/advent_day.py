@@ -34,7 +34,7 @@ class AdventDay:
         print(str.format(
             '{} ({}){} P1: [ {} ]{} P2: [ {} ]'.format(
                 self.__class__.__name__,
-                str.center(str(round(end_time, 4)) + 's', 9),
+                str.center('{0:.4f}s'.format(round(end_time, 4)), 9),
                 lb,
                 str.center(str(results[0]), 18),
                 lb,

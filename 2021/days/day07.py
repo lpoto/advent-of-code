@@ -5,7 +5,7 @@ import numpy as np
 class Day07(AdventDay):
     def __init__(self, filename):
         self.pos = np.array(
-            list(map(int, self.read_input(filename, lines=False).split(','))))
+            list(map(int, self.read_input(filename)[0].split(','))))
 
     def results(self):
         return tuple(self.calculate_fuel_consumption(i == 0) for i in range(2))
