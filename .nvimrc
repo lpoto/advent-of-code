@@ -1,20 +1,7 @@
-lua << EOF
-vim.fn['telescope_pickers'] = function()
-    require("telescope").setup({
-        pickers = {
-            find_files = {
-                theme = "ivy",
-                hidden = 1,
-                file_ignore_patterns = {
-                    "__compiled__",
-                    ".git/",
-                    "__pycache__/",
-                    }
-                }
-            }
-        })
-end
+let g:telescope_ignore_patterns = ['__compiled__', '.git/', '__pycache__']
+let g:telescope_previewer = v:true
 
+lua << EOF
 vim.fn['program_filetypes'] = function()
     root = require('root')()
     require('program').setup({

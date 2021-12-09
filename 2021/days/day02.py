@@ -3,8 +3,9 @@ from advent_day import AdventDay
 
 class Day02(AdventDay):
     def __init__(self, filename):
-        self.directions = tuple((i[0], int(i.split()[1]))
-                                for i in self.read_input(filename))
+        with open(filename) as f:
+            self.directions = tuple((i[0], int(i.split()[1]))
+                                    for i in f.readlines())
 
     def results(self):
         return tuple(self.calculate_position(i == 1) for i in range(2))

@@ -3,9 +3,10 @@ from advent_day import AdventDay
 
 class Day05(AdventDay):
     def __init__(self, filename):
-        self.coordinates = tuple(tuple(
-            tuple(int(i) for i in line.split('->')[k].split(','))
-            for k in range(2)) for line in self.read_input(filename))
+        with open(filename) as f:
+            self.coordinates = tuple(tuple(
+                tuple(int(i) for i in line.split('->')[k].split(','))
+                for k in range(2)) for line in f.readlines())
 
     def results(self):
 

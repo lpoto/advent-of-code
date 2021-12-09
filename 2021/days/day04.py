@@ -3,7 +3,8 @@ from advent_day import AdventDay
 
 class Day04(AdventDay):
     def __init__(self, filename):
-        self.input = self.read_input(filename, strip='\n', split='\n\n')
+        with open(filename) as f:
+            self.input = f.read().strip('\n').split('\n\n')
         self.input = (tuple(map(int, self.input[0].split(','))),
                       tuple(tuple(tuple(map(int, i.split()))
                                   for i in b.split('\n'))

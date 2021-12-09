@@ -3,9 +3,10 @@ from advent_day import AdventDay
 
 class Day08(AdventDay):
     def __init__(self, filename):
-        self.input = tuple(tuple(tuple(set(c for c in s) for s in c.split(
-        )) for c in i.split(' | ')) for i in self.read_input(filename))
-        self.unique = {1: 2, 4: 4, 7: 3, 8: 7}
+        with open(filename) as f:
+            self.input = tuple(tuple(tuple(set(c for c in s) for s in c.split(
+            )) for c in i.split(' | ')) for i in f.readlines())
+            self.unique = {1: 2, 4: 4, 7: 3, 8: 7}
 
     def results(self):
         return (self.part_one(), self.part_two())

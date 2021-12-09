@@ -3,25 +3,11 @@ import time
 
 class AdventDay:
     def __init__(self, filename):
-        self.lines = self.read_input(filename)
+        with open(filename) as f:
+            self.lines = f.readlines()
 
     def results(self):
         pass
-
-    def read_input(self, filename, *, to_int=False,
-                   strip=None, split=None, lines=True):
-        input = None
-        with open(filename) as file:
-            input = file.read()
-        if strip:
-            input = input.strip(strip)
-        if split is None and lines:
-            input = input.splitlines()
-        if split is not None:
-            input = input.split(split)
-        if to_int:
-            input = list(map(int, input))
-        return input
 
     def print_results(self, linebreak=True) -> int:
         start_time = time.time()

@@ -3,7 +3,8 @@ from advent_day import AdventDay
 
 class Day03(AdventDay):
     def __init__(self, filename):
-        self.lines = self.read_input(filename)
+        with open(filename) as f:
+            self.lines = f.read().splitlines()
 
     def results(self):
         return (self.part_one(), self.part_two())
