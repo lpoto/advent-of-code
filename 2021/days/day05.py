@@ -21,5 +21,5 @@ class Day05(AdventDay):
             for i in ((x1 + (i if x1 < x2 else (-i if x1 > x2 else 0)),
                        y1 + (i if y1 < y2 else (-i if y1 > y2 else 0)),
                        ) for i in range(max(abs(x1 - x2), abs(y1 - y2)) + 1)):
-                overlaps[i] = overlaps.setdefault(i, 0) + 1
+                overlaps[i] = overlaps.get(i, 0) + 1
         return sum(1 for i in overlaps.values() if i > 1)

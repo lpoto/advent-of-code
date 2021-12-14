@@ -29,6 +29,5 @@ class Day13(AdventDay):
         l1, l2 = max(i[1] for i in d) + 1, max(i[0] for i in d) + 1
         x = [[' ' for _ in range(max(l1, l2))] for _ in range(min(l1, l2))]
         for i in d:
-            x[i[l1 < l2]][i[(l1 >= l2)]] = 'X'
-        # print('\n'.join(''.join(i) for i in x)) # determine letters from this
-        return 'too large to print'
+            x[i[l1 < l2]][i[(l1 >= l2)]] = '█'
+        return '\n' + ('\n'.join(''.join(i) for i in x)) + '\n'
